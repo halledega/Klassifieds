@@ -1,0 +1,77 @@
+#klassyNav .main {
+    float: left;
+    list-style: none;
+}
+    #klassyNav .main a {
+        display: block;
+        width: 150px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        text-indent: 10px;
+        border: 1px solid #000000;
+        margin: 0 10px 0 0;
+    }
+    #klassyNav .main a:hover {
+        background: #c6cfff;
+        color: #FFFFFF;
+    }
+    #klassyNav  ul {
+        padding: 0;
+        margin: 0;
+    }
+#klassyNav .sub {
+    position: absolute;
+    display: none;
+    background: transparent;
+
+}
+    #klassyNav .sub li {
+        list-style: none;
+    }
+#klassyNav .sub a:first-child {border-top: none;}
+#klassyNav .main:hover .sub {display: block; z-index: 10;}
+
+#klassyNav select {
+    width: 150px;
+    margin: 0 5px 0 0;
+}
+#klassyNav .categories {
+    left: 0;
+    z-index: 10;
+    width: 99%;
+    padding: 5px;
+}
+    #klassyNav .categories h5 {
+        padding: 0;
+        margin: 0;
+    }
+    #klassyNav .categories a {
+        display: inline;
+        border: none;
+    }
+    #klassyNav .categories a:hover {
+        background: inherit;
+        color: inherit;
+    }
+    #klassyNav .categories td {
+        vertical-align: top;
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+        background: #c6cfff;
+    }
+    #klassyNav .categories td h3, #klassyNav .categories td p {
+        /*display: block;
+        width: 100%;*/
+        padding: 0;
+        margin: 0;
+    }
+#klassyNav .category-list {
+    display: inline-block;
+    list-style-type: circle;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 10px;
+}

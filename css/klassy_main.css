@@ -1,0 +1,99 @@
+/***********************************************************************************************************************************************
+*
+*styles for frontend ads_view
+*
+***********************************************************************************************************************************************/
+.klassyAd {
+    margin: 0 auto 10px auto;
+    height: 150px;
+}
+    .klassy h2 {padding: 0; margin: 0}
+
+.klassyMainInfo, .klassyImage, .klassyStats {
+    border: 1px solid #000;
+    height: 100%;
+}
+
+.klassyMainInfo {
+    margin: 0 210px 0 160px;
+    padding: 0 0 0 5px;
+}
+
+    .klassyMainInfo:hover {background: #c6cfff;}
+
+.klassyImage {
+    width: 150px;
+    text-align: center;
+    float: left;
+}
+div.klassyStats {
+    float: right;
+    width: 195px;
+    padding-left: 5px;
+}
+    div.klassyStats img {
+        padding: 0;
+        margin: 0;
+        vertical-align: middle;
+        border: none;
+        outline: none;
+    }
+    div.klassyStats ul.klassyStatsList {
+        list-style: none;
+        list-style-image: none;
+        list-style-type: none;
+        padding-left: 0 0 0 5px;
+        margin: 10px 0 0 0;
+    }
+    div.klassyStats li.klassyStat {
+        margin: 0 0 10px 0;
+    }
+/***********************************************************************************************************************************************
+*
+*styles for backend end ads_view
+*
+***********************************************************************************************************************************************/
+#adInfoTable {}
+    #adInfoTable td, #adInfoTable th {
+        text-align: center;
+        padding:0;
+        margin: 0;
+        vertical-align:  middle;
+    }
+    #adInfoTable td {
+        height: 50px;
+    }
+
+.idCell {width: 10px;}
+.imageCell {width: 50px;}
+.titleCell {width: 50px;}
+.userCell {width: 150px;}
+.descCell {overflow: scroll;}
+.dateCell {width: 75px;}
+.statusCell {width: 50px;}
+.buttonCell {width:32px;}
+/***********************************************************************************************************************************************
+*
+*styles for backend end pages that need a left and right div
+***********************************************************************************************************************************************/
+.left_cell {
+  float: left;
+  width: 25%;
+}
+
+.right_cell {
+  float: right;
+  margin-left: 10px;
+  width: 65%;
+}
+
+.left_cell section.title, .left_cell section.item, .right_cell section.title, .right_cell section.item{
+  width: 100%;
+}
+
+.right_cell .input {
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  background-color: green;
+}

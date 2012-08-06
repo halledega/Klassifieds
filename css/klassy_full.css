@@ -1,0 +1,149 @@
+#infoHolder{
+    float: left;
+    margin-bottom: 10px;
+    width: 400px;
+    display: inline-block;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: none;
+    border-left: 1px solid black;
+}
+#adTitle,.infoTitle,.info,.emailInfo {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid black;
+    height: 50px;
+    line-height: 50px;
+}
+.info, .infoTitle, .emailInfo {
+    display: inline-block;
+}
+#adTitle {
+    font-size: 24px;
+    text-align: center;
+}
+.infoTitle {
+    width: 100px;
+    text-indent: 5px;
+}
+.info {
+    width: 300px;
+    text-indent: 5px;
+}
+.emailInfo {
+    text-align: center;
+}
+
+.selectBox {
+	display: block;
+	width: 290px;
+	margin-bottom: 5px;
+}
+
+#images {
+  float: right;
+  display: block;
+  text-align: center;
+  width: 300px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+#big img {
+  border: none;
+  padding: 5px;
+}
+#small img {
+  border: none;
+  padding: 10px;
+}
+#caption {
+  display: block;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#description {
+  font-size: 16px;
+  clear: both;
+  padding: 10px;
+  border: 1px solid black;
+  max-height: 350px;
+  overflow: auto;
+}
+#description p {
+  text-indent: 10px;
+  margin-bottom: 10px;
+}
+/*styles below are for full size view of images im jQery light boxy thing */
+	.bigimg {
+		position: absolute;
+		z-index: 100;
+		top: 0;
+		right: 25%;
+		background: #FFFFFF;
+		border: 2px ridge black;
+	}
+		#adbaker .bigimg img {
+			border-bottom: 2px ridge black;
+		}
+
+	#bigcaption {
+		display: block;
+		text-align: center;
+		font-size: large;
+		margin: 5px auto 5px auto;
+	}
+
+	#closeBtn {
+		margin: 0 auto 10px auto;
+		display: block;
+		width: 50px;
+		height: 25px;
+		line-height: 25px;
+		border: 1px solid black;
+		text-align: center;
+		text-decoration: none;
+		color: black;
+	}
+/*styles below for temp_editad.php only*/
+#adbaker #inputTitle {
+		width: 90%;
+		height: 20px;
+		text-align: center;
+}
+#adbaker #inputPrice {
+		width: 45%;
+		height: 20px;
+}
+#adbaker .selectCategory, #adbaker .selectLocation {
+		width: 45%;
+		height: 20px;
+		display: inline;
+}
+#adbaker .selectCurrency {
+		width: 45%;
+		height: 20px;
+		display: inline;
+}
+#adbaker #taDescription {
+		width: 100%;
+		height: 200px;
+		overflow: auto;
+}
+#adbaker #imagesList {
+	float: right;
+	display: block;
+	text-align: center;
+	width: 500px;
+	margin-bottom: 10px;
+}
+	#adbaker #imagesList ul {
+		list-style: none;
+		display: block;
+		height: 55px;
+		vertical-align: middle;
+	}

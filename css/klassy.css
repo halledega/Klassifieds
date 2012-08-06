@@ -1,0 +1,12 @@
+.klassy {
+    padding: 0;
+    margin: 0;
+}
+#klassyNav  {
+    position: relative;
+    width: 100%;
+    height: 25px;
+    margin: 25px 0 25px 0;
+}
+
+
