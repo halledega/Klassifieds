@@ -8,7 +8,7 @@
     <?php foreach($ads as $result):?>
     <div class="klassyAd">
         <div class="klassyImage">
-            <img src="<?php echo $result['images'][0]['file']; ?>150/150/" alt="<?php echo $result['images'][0]['caption']; ?>"/>
+            <img src="<?php echo BASE_URL.ADDONPATH.'modules/Klassifieds/imgs/'.$result['images'][0]['file']; ?>" alt="<?php echo $result['images'][0]['caption']; ?>" width="150" height="<?php $h = 150*0.75; echo $h; ?>"/>
         </div>
         <div class="klassyStats">
             <ul class="klassyStatsList">
@@ -49,3 +49,5 @@
 */
 
 ?>
+
+<img src="<?php echo BASE_URL.ADDONPATH.'modules/Klassifieds/imgs/'.$ad['images'][0]['file']; ?>" width="50" height="<?php $h = 50*0.75; echo $h; ?>"/>

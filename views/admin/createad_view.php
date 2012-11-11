@@ -179,8 +179,8 @@
             <ul>
                 <li class="<?php echo alternator('', 'even'); ?>">
                     <div class="buttons align-right padding-top">
-                        <?php echo form_button(array('name'=>'submit','class'=>'btn blue','value'=>'submit','type'=>'submit','content'=>'Save Settings')); ?>
-                        <?php echo form_button(array('name'=>'reset','class'=>'btn red','value'=>'reset','type'=>'reset','content'=>'Reset Settings')); ?>
+                        <?php echo form_button(array('name'=>'submit','class'=>'btn blue','value'=>'submit','type'=>'submit','content'=>'Continue')); ?>
+                        <?php echo form_button(array('name'=>'reset','class'=>'btn red','value'=>'reset','type'=>'reset','content'=>'Reset Form')); ?>
                     </div>
                 </li>
             </ul>

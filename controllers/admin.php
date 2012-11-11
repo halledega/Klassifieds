@@ -114,7 +114,10 @@ class Admin extends Admin_Controller {
             )
         )
     );
-
+/**
+ *
+ *
+ */
     public function __construct() {
         parent::__construct();
 
@@ -124,6 +127,9 @@ class Admin extends Admin_Controller {
         $this->load->model('settings_model');
 
         $this->load->library('form_validation');
+
+        //$this->config->load('files');
+        //$this->load->library('files/files');
 
         $this->lang->load('klass');
 
@@ -138,7 +144,10 @@ class Admin extends Admin_Controller {
     //Set the partials and metadata here since they're used everywhere
         $this->template->set_partial('shortcuts', 'admin/partials/shortcuts');
     }
-
+/**
+ *
+ *
+ */
     function index() {
         $data['ads'] = $this->ads_model->getAds(); //method parameters = array(id,category,subcategory,user),limit,offset leave blank for all ads
         $data['cat_query'] = $this->category_m->getCategories();
@@ -147,11 +156,11 @@ class Admin extends Admin_Controller {
         $this->template ->build('admin/ads_view',$data);
     }
 
-    /**
-    *
-    *
-    *
-    **/
+/**
+*
+*
+*
+**/
     function CreateAd($action = NULL) {
         if(isset($_POST['save'])) {
             $action = $_POST['save'];
@@ -165,7 +174,7 @@ class Admin extends Admin_Controller {
         $data['ksett'] = $this->klassifiedsettings;
         $data['categories'] = $this->category_m->DDcategories(array('parent_id '=>0));
         $data['subcategories'] = $this->category_m->DDcategories(array('parent_id !='=>0));
-    //if the action for this method is NULL then the ad is new for validtae the form and what not
+    //if the action for this method is NULL then the ad is new so validtae the form and what not
         switch ($action):
             case "save":
                 redirect(BASE_URL.'index.php/admin/klassifieds');
@@ -223,37 +232,76 @@ class Admin extends Admin_Controller {
             break;
         endswitch;
     }
-
+/**
+ *
+ *
+ */
     function Categories() {
-
-        $id = $this->uri->segment(4);
-        if(!empty($id)) {
-            $data['single_cat'] = $this->category_m->getCategories($id);
-        }
-
         $data['cat_query'] = $this->category_m->getCategories();
-
+        $data['categories_list'] = $this->category_m->DDcategories(array('parent_id '=>0));
+        $data['id'] = $this->uri->segment(4);
+        if(!empty($data['id'])) {
+            $data['selected_cat'] = $this->category_m->getCategories($data['id']);
+        }
         $this->template->active_section = 'categories';
-        $this->template ->build('admin/categories_v',$data);
+        $this->template ->build('admin/categories_view',$data);
     }
-
-    function NewCategory() {
-        $this->template->active_section = 'categories';
-        $this->template->build('admin/newcategory_view',$data);
+/**
+ *
+ *
+ */
+    function CreateCategory() {
+    //delete category if delete button clicked
+        if(isset($_POST['delete'])) {
+            $id = $this->input->post("id");
+            $this->category_m->deleteCategory($id);
+        }
+        else {
+        //if an id has been posted update the category otherwise it's a new one so add it
+            if(isset($_POST['id'])) {
+                $id = $_POST['id'];
+                $data['category'] = array(
+                    "id" => $this->input->post("id"),
+                    "parent_id" => $this->input->post("parent_id"),
+                    "name" => $this->input->post("name"),
+                    "desc" => $this->input->post("desc")
+                );
+            //update category
+                if($this->category_m->updateCategory($data['category'])) {
+                    redirect('admin/klassifieds/categories/'.$id);
+                }
+            }
+            else {
+                $data['category'] = array(
+                    "parent_id" => $this->input->post("parent_id"),
+                    "name" => $this->input->post("name"),
+                    "description" => $this->input->post("description")
+                );
+            //build a new category
+                if($this->category_m->createCategory($data['category'])) {
+                    echo 'fart';
+                    //redirect('admin/klassifieds/categories');
+                }
+            }
+        }
     }
-
+/**
+ *
+ *
+ */
     function Settings() {
         $data['klassifiedsettings'] = $this->klassifiedsettings;
         $this->template->active_section = 'settings';
         $this->template->build('admin/settings_view',$data);
 
     }
-
+/**
+ *
+ *
+ */
     function updateSettings() {
     // Set the validation rules
         $this->form_validation->set_rules($this->validation_rules['setting_modify_rules']);
-
-
         if ($this->form_validation->run()  == TRUE)
         {
             $ns = array(
@@ -287,4 +335,110 @@ class Admin extends Admin_Controller {
             $this->template->build('admin/settings_view',$data);
         }
     }
+
+/**
+ *
+ *
+ */
+    function uploadFile() {
+      $this->template->active_section = 'ads';
+      $this->template->build('admin/uploadform');
+    }
+
+/**
+ *
+ *
+ */
+    function doUpload(){
+      $file_path = realpath(BASEPATH.'../../'.ADDONPATH.'modules/Klassifieds/imgs/');
+
+      $config = array(
+                  'allowed_types' => 'jpg|jpeg|gif|png',
+                  //'upload_path'   => UPLOAD_PATH.'klassifieds/'
+                  'upload_path'   => $file_path
+                );
+      $this->load->library('upload',$config);
+
+      if($this->upload->do_upload('file')) {
+
+        $file_data = $this->upload->data();
+        echo "<pre>";
+          print_r($file_data);
+        echo "</pre>";
+
+        $config = array(
+                    'source_image'    => $file_data['full_path'],
+                    'new_image'       => $file_data['file_path'].'thumbs/',
+                    //'new_image'       => $file_path.'/thumbs/',
+                    'maintain_ratio'  => TRUE,
+                    'width'           => 50,
+                    'height'          => 50
+                  );
+
+        $this->load->library('image_lib', $config);
+
+        $this->image_lib->resize();
+
+      }
+      else {
+        $this->upload->display_errors();
+      }
+
+    }
+
+
+
+
+/**
+    function doUpload() {
+
+      $file = $_FILES['file'];
+
+      $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      $size = strlen( $chars );
+      for( $i = 0; $i < 5; $i++ ) {
+        $name .= $chars[ rand( 0, $size - 1 ) ];
+      }
+
+      echo $name;
+
+      //we need to the the if for the Klassifieds folder -> this so far is really dumb
+        $sql = "SELECT id FROM default_file_folders WHERE name = 'Klassifieds' LIMIT 1";
+        $query = $this->db->query($sql);
+
+        $folder_id = $query->result_array();
+      //upload files also suposed to rename the fucking thing
+        $upload = FILES::upload($folder_id[0]['id'],$name,'file',640,480,TRUE);
+
+        //createThumb($file['name']);
+
+
+    }
+
+    function createThumb($file) {
+      $config['image_library'] = 'gd2';
+      $config['source_image'] = UPLOAD_PATH . 'files/'.$file;
+      $config['create_thumb'] = TRUE;
+      $config['maintain_ratio'] = TRUE;
+      $config['width'] = 75;
+      $config['height'] = 50;
+
+      $this->load->library('image_lib');
+      $this->image_lib->initialize($config);
+
+      $this->image_lib->resize();
+    }
+
+    function rand_string( $length ) {
+      $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      $size = strlen( $chars );
+      for( $i = 0; $i < $length; $i++ ) {
+        $str .= $chars[ rand( 0, $size - 1 ) ];
+      }
+
+      return $str;
+    }
+ **/
 }

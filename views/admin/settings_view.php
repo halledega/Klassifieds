@@ -6,7 +6,7 @@ short_desc_length           => numeric
 long_desc_length            => numeric
 ad_durations                => csv ie 1,2,3,4 etc
 ad_list                     => options detailed or list
-include_categories          => boolean yes,no    
+include_categories          => boolean yes,no
 include_subcategories       => boolean yes,no
 include_durations           => boolean yes,no
 include_locations           => boolean yes,no
@@ -21,7 +21,7 @@ thumb_path                  => string
 */
 ?>
 <section class="title"><h4><?php echo lang('klass.page_title'); ?></h4></section>
-<section class="item">
+<section class="settings">
 <?php echo form_open_multipart('admin/Klassifieds/updateSettings'); ?>
 <div class="tabs" style="width:100%">
     <ul class="tab-menu">
@@ -42,12 +42,12 @@ thumb_path                  => string
                     <?php
                     $data = array('name'=> 'ad_list','value'=> 'detailed');
                     if($klassifiedsettings['ad_list'] == 'detailed'){$data['checked'] = TRUE;}
-                    
+
                     echo '<span><label class="radioLabel">Detailed: </label>'.form_radio($data).'</span>';
-                    
+
                     $data = array('name'=> 'ad_list','value'=> 'list');
                     if($klassifiedsettings['ad_list'] == 'list'){$data['checked'] = TRUE;}
-                    
+
                     echo '<span><label class="radioLabel">List: </label>'.form_radio($data).'</span>';
                     ?>
                 </div>

@@ -4,7 +4,6 @@
     <table  border="0" cellspacing="0" cellpadding="0" class="table-list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Image</th>
                 <th>Title</th>
                 <th>User</th>
@@ -25,8 +24,7 @@
     <tbody>
     <?php foreach($ads as $ad): ?>
         <tr>
-            <td class="idCell"><?php echo $ad['id']; ?></td>
-            <td class="imageCell"><img src="<?php echo $ad['images'][0]['file'].'50/50'; ?>" width="50" height="50"/></td>
+            <td class="imageCell"><img src="<?php echo BASE_URL.ADDONPATH.'modules/Klassifieds/imgs/'.$ad['images'][0]['file']; ?>" width="50" height="<?php $h = 50*0.75; echo $h; ?>"/></td>
             <td class="titleCell"><?php echo $ad['title']; ?></td>
             <td class="userCell"><?php echo $ad['userName']; ?></td>
             <td class="descCell"><?php echo $ad['title']; ?></td>
@@ -45,7 +43,7 @@
     </tbody>
     </table>
     <div class="table_action_buttons">
-      <?php $this->load->view('admin/partials/buttons', array('buttons' => array('delete'))); ?>;
+      <?php $this->load->view('admin/partials/buttons_partial', array('buttons' => array('delete'))); ?>;
     </div>
 <?php } else { ?>
     <div class="no-data">
@@ -59,19 +57,19 @@
 
 <?php
 /*
-'id'=>$ad['id'],
-'user'=>$ad['user_id'],
-'category'=> $category[0]['name'],
-'subcategory'=>$subcategory[0]['name'],
-'county'=>$ad['country'],
-'state'=>$ad['state'],
-'city'=>$ad['city'],
-'title'=>$ad['adTitle'],
-'descShort'=>$ad['descShort'],
-'descLong'=>$ad['descLong'],
-'images'->$images,
-'price'=>$ad['price'],
-'posted'=>$ad['start']
+'id'          =>  $ad['id'],
+'user'        =>  $ad['user_id'],
+'category'    =>  $category[0]['name'],
+'subcategory' =>  $subcategory[0]['name'],
+'county'      =>  $ad['country'],
+'state'       =>  $ad['state'],
+'city'        =>  $ad['city'],
+'title'       =>  $ad['adTitle'],
+'descShort'   =>  $ad['descShort'],
+'descLong'    =>  $ad['descLong'],
+'images'      =>  $images, this is another array
+'price'       =>  $ad['price'],
+'posted'      =>  $ad['start']
 */
 
 ?>

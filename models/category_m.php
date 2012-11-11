@@ -61,5 +61,30 @@ function DDcategories($where) {
     return $categories_array;
 }
 
-
+function updateCategory($category) {
+    $categories_tbl = $this->db->dbprefix('klassCategories');
+    $id = $category['id'];
+    foreach($category as $key => $value) {
+        $sql ="UPDATE $categories_tbl SET $key = '$value' WHERE id = $id";
+        $this->db->query($sql);
+    }
 }
+
+function createCategory($category) {
+    $categories_tbl = $this->db->dbprefix('klassCategories');
+    $sql = "INSERT INTO {$categories_tbl} (id,parent_id,name,description) VALUES (
+                NULL,
+                {$category['parent_id']},
+                '{$category['name']}',
+                '{$category['description']}'
+            )";
+
+    $this->db->query($sql);
+}
+
+function deleteCategory($id) {
+    $sql = "DELETE FROM {$this->db->dbprefix('klassCategories')} WHERE id = $id";
+    $this->db->query($sql);
+}
+
+}//end class

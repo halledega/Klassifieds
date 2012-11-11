@@ -72,28 +72,3 @@ div.klassyStats {
 .dateCell {width: 75px;}
 .statusCell {width: 50px;}
 .buttonCell {width:32px;}
-/***********************************************************************************************************************************************
-*
-*styles for backend end pages that need a left and right div
-***********************************************************************************************************************************************/
-.left_cell {
-  float: left;
-  width: 25%;
-}
-
-.right_cell {
-  float: right;
-  margin-left: 10px;
-  width: 65%;
-}
-
-.left_cell section.title, .left_cell section.item, .right_cell section.title, .right_cell section.item{
-  width: 100%;
-}
-
-.right_cell .input {
-  padding: 0;
-  margin: 0;
-  width: 200px;
-  background-color: green;
-}
