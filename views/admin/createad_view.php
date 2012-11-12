@@ -177,6 +177,12 @@
         <div class="form_inputs" id="images">
         <fieldset>
             <ul>
+                <li class="<?php echo alternator('', 'odd'); ?>">
+                    <div class="input">
+                        <label for="file" class="upload">Upload File:</label>
+                        <?php echo form_upload('file', NULL, 'multiple="multiple"'); ?>
+                    </div>
+                </li>
                 <li class="<?php echo alternator('', 'even'); ?>">
                     <div class="buttons align-right padding-top">
                         <?php echo form_button(array('name'=>'submit','class'=>'btn blue','value'=>'submit','type'=>'submit','content'=>'Continue')); ?>

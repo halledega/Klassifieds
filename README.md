@@ -7,7 +7,7 @@
 
 ## Team
 
-* [Michael Halliday](http://codegeneers.pagodabox.com)
+* [Michael Halliday](https://github.com/halledega)
 
 ## Description
 
